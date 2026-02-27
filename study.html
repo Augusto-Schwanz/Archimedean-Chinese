@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study — Archimedean Chinese</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body class="study-page">
+
+  <!-- ── Study top bar ── -->
+  <div class="study-topbar">
+    <div class="study-topbar__left">
+      <a href="progress.html" class="btn btn--ghost"
+         style="font-size:0.82rem;padding:0.4rem 0.9rem" data-i18n="back">Back</a>
+      <span style="font-size:0.8rem;color:var(--text-muted)" id="deckLabel">HSK 1</span>
+    </div>
+    <div class="study-progress-wrap">
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="sessionProgressBar" style="width:0%"></div>
+      </div>
+    </div>
+    <div class="study-topbar__right">
+      <span class="study-count" id="sessionCount">0 / 0</span>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en" data-i18n="langEN">EN</button>
+        <button class="lang-btn" data-lang="zh" data-i18n="langZH">中文</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Main study area ── -->
+  <main class="study-main" id="studyMain">
+
+    <!-- Active card view -->
+    <div class="flashcard-wrap" id="cardView">
+
+      <!-- The flashcard -->
+      <div class="flashcard" id="flashcard">
+        <span class="flashcard__type-badge badge badge--accent" id="cardTypeBadge"></span>
+        <div class="flashcard__meta" id="cardMeta">HSK 1 · noun</div>
+        <div class="flashcard__char chinese-char" id="cardChar">我</div>
+        <p class="flashcard__prompt" id="cardPrompt"></p>
+      </div>
+
+      <!-- Answer input (shown before submission) -->
+      <div class="answer-area" id="answerArea">
+        <input class="input" id="answerInput" type="text"
+               data-i18n-placeholder="typeAnswer"
+               autocomplete="off" autocorrect="off"
+               autocapitalize="off" spellcheck="false" />
+        <button class="btn btn--primary" id="submitBtn" data-i18n="submit">Submit</button>
+      </div>
+
+      <!-- Result panel (shown after submission) -->
+      <div class="result-panel hidden" id="resultPanel">
+        <div class="result-panel__header">
+          <span class="result-panel__verdict" id="resultVerdict"></span>
+          <!-- Override button (only shown on incorrect) -->
+          <button class="btn btn--ghost hidden" id="overrideBtn"
+                  style="font-size:0.8rem;padding:0.35rem 0.85rem"
+                  data-i18n="overrideBtn">Mark as Correct</button>
+        </div>
+
+        <dl class="result-panel__answers">
+          <dt data-i18n="yourAnswer">Your answer:</dt>
+          <dd id="yourAnswerText"></dd>
+          <dt data-i18n="correctAnswer">Correct answer:</dt>
+          <dd id="correctAnswerText"></dd>
+        </dl>
+
+        <!-- Override reason selector (hidden until override clicked) -->
+        <div id="overrideArea" class="hidden" style="margin-bottom:0.75rem">
+          <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:0.4rem"
+             data-i18n="overrideTitle">Why should this be marked correct?</p>
+          <div style="display:flex;gap:0.6rem;flex-wrap:wrap">
+            <select class="override-select" id="overrideReason"></select>
+            <button class="btn btn--success" id="confirmOverrideBtn"
+                    data-i18n="confirmOverride">Confirm</button>
+            <button class="btn btn--ghost" id="cancelOverrideBtn"
+                    data-i18n="cancelOverride">Cancel</button>
+          </div>
+        </div>
+
+        <div class="result-panel__actions">
+          <div></div><!-- spacer -->
+          <button class="btn btn--primary" id="nextBtn" data-i18n="next">
+            Next &nbsp;[Space]
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Session complete view -->
+    <div class="session-complete hidden" id="completeView">
+      <div class="session-complete__icon">🎉</div>
+      <h2 class="session-complete__title" data-i18n="sessionComplete">Session Complete!</h2>
+      <p class="session-complete__body" data-i18n="sessionCompleteBody"></p>
+      <div class="session-complete__stats">
+        <div class="stat-card">
+          <div class="stat-card__value" id="completeReviewed">0</div>
+          <div class="stat-card__label" data-i18n="reviewed">Reviewed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__value" id="completeAccuracy">0%</div>
+          <div class="stat-card__label" data-i18n="accuracy">Accuracy</div>
+        </div>
+      </div>
+      <a href="progress.html" class="btn btn--primary btn--lg"
+         style="width:100%" data-i18n="endSession">End Session</a>
+    </div>
+
+  </main>
+
+  <script src="js/data/hsk1.js"></script>
+  <script src="js/core/sm2.js"></script>
+  <script src="js/core/bkt.js"></script>
+  <script src="js/core/grader.js"></script>
+  <script src="js/core/scheduler.js"></script>
+  <script src="js/storage/db.js"></script>
+  <script src="js/ui/i18n.js"></script>
+  <script src="js/study.js"></script>
+</body>
+</html>

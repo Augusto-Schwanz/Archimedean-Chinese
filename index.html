@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archimedean Chinese</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="app-header">
+    <span class="app-title">Archimedean Chinese</span>
+    <button id="lang-toggle-btn" class="lang-btn">中文</button>
+  </header>
+
+  <!-- WELCOME -->
+  <div id="screen-welcome" class="screen hidden">
+    <div class="card-panel welcome-panel">
+      <div class="welcome-deco" aria-hidden="true">学</div>
+      <h1 id="welcome-title"></h1>
+      <p  id="welcome-body" class="welcome-body"></p>
+      <label class="checkbox-label">
+        <input type="checkbox" id="welcome-hide-cb" />
+        <span id="welcome-hide-label"></span>
+      </label>
+      <button id="welcome-start-btn" class="btn-primary btn-lg"></button>
+    </div>
+  </div>
+
+  <!-- PROFILE -->
+  <div id="screen-profile" class="screen hidden">
+    <div class="card-panel">
+      <h2 id="profile-title"></h2>
+      <div id="profile-list" class="profile-list"></div>
+      <button id="new-profile-btn" class="btn-secondary mt-2"></button>
+      <div id="profile-create-form" class="hidden mt-2">
+        <input id="profile-name-input" class="text-input" type="text" maxlength="30" autocomplete="off" />
+        <div class="row-btns mt-1">
+          <button id="profile-create-btn" class="btn-primary"></button>
+          <button id="profile-cancel-btn" class="btn-ghost"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOME -->
+  <div id="screen-home" class="screen hidden">
+    <div class="home-layout">
+      <div class="home-userstrip">
+        <span id="home-hello" class="home-greeting"></span>
+        <button id="home-switch-btn" class="btn-ghost btn-sm"></button>
+      </div>
+      <div class="home-mastery-block">
+        <div class="home-mastery-labels">
+          <span id="home-mastery-pct" class="mastery-pct"></span>
+          <span id="home-seen" class="muted"></span>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="home-mastery-fill" class="progress-bar-fill" style="width:0%"></div>
+        </div>
+      </div>
+      <div class="deck-card">
+        <div class="deck-info">
+          <h2 id="deck-name" class="deck-title"></h2>
+          <p  id="deck-desc" class="deck-desc"></p>
+          <span id="deck-due" class="badge"></span>
+        </div>
+        <div class="deck-actions">
+          <button id="study-btn"    class="btn-primary"></button>
+          <button id="progress-btn" class="btn-secondary"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div id="screen-progress" class="screen hidden">
+    <div class="progress-layout">
+      <div class="progress-header">
+        <button id="progress-back-btn" class="btn-ghost"></button>
+        <h2 id="progress-title"></h2>
+      </div>
+      <div class="progress-summary">
+        <div class="progress-summary-labels">
+          <span id="progress-overall-pct" class="mastery-pct"></span>
+          <span id="progress-seen" class="muted"></span>
+        </div>
+        <div class="progress-bar-bg lg">
+          <div id="progress-overall-fill" class="progress-bar-fill" style="width:0%"></div>
+        </div>
+      </div>
+      <h3 id="progress-cat-title" class="section-title"></h3>
+      <div id="progress-cat-list" class="progress-cat-list"></div>
+    </div>
+  </div>
+
+  <!-- STUDY -->
+  <div id="screen-study" class="screen hidden">
+    <div class="study-header">
+      <button id="study-exit-btn" class="btn-ghost btn-sm"></button>
+      <div class="study-progress-wrap">
+        <div class="progress-bar-bg sm">
+          <div id="study-progress-fill" class="progress-bar-fill" style="width:0%"></div>
+        </div>
+        <span id="study-progress" class="study-progress-text">0 / 0</span>
+      </div>
+    </div>
+
+    <div id="study-card-area" class="study-card-area">
+      <div class="study-card">
+        <p   id="study-prompt"      class="study-prompt"></p>
+        <div id="study-chinese"     class="study-chinese"></div>
+        <div id="study-pinyin-hint" class="study-pinyin-hint"></div>
+      </div>
+
+      <div class="study-answer-area">
+        <input id="study-input" class="study-input" type="text"
+               autocomplete="off" autocorrect="off" spellcheck="false" />
+        <button id="study-submit-btn" class="btn-primary"></button>
+      </div>
+
+      <div id="study-result" class="study-result hidden">
+        <div id="study-result-label" class="result-label-big"></div>
+        <p id="study-correct-answer" class="result-line"></p>
+        <p id="study-your-answer"    class="result-line"></p>
+        <button id="study-override-btn" class="btn-ghost btn-sm hidden"></button>
+      </div>
+
+      <button id="study-next-btn" class="btn-primary btn-lg hidden"></button>
+    </div>
+
+    <div id="study-done" class="study-done hidden">
+      <div class="done-icon">🎉</div>
+      <h2 id="session-done-title"></h2>
+      <p  id="session-done-stats"></p>
+      <button id="session-back-btn" class="btn-primary btn-lg"></button>
+    </div>
+
+    <div id="study-no-cards" class="study-done hidden">
+      <div class="done-icon">✓</div>
+      <p id="no-cards-msg"></p>
+      <button id="session-back-btn2" class="btn-primary btn-lg"></button>
+    </div>
+  </div>
+
+  <!-- OVERRIDE MODAL -->
+  <div id="override-modal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <h3 id="override-title"></h3>
+      <div id="override-reason-list" class="override-reason-list"></div>
+      <button id="override-cancel-btn" class="btn-ghost mt-1"></button>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/bkt.js"></script>
+  <script src="js/sm2.js"></script>
+  <script src="js/scheduler.js"></script>
+  <script src="js/grader.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
